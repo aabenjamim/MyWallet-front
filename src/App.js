@@ -1,23 +1,30 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useSubmit } from "react-router-dom"
 import styled from "styled-components"
 import HomePage from "./pages/HomePage"
 import SignInPage from "./pages/SignInPage"
 import SignUpPage from "./pages/SignUpPage"
 import Receiving from "./pages/Receiving"
 import Spends from "./pages/Spends"
+import { useState } from "react"
+import { UserContext } from "./contexts/UserContext"
 
 export default function App() {
+
+  const [user, setUser] = useState({})
+
   return (
     <PagesContainer>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SignInPage />} />
-          <Route path="/cadastro" element={<SignUpPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/nova-transacao/entrada" element={<Receiving />} />
-          <Route path="/nova-transacao/saida" element={<Spends />} />
-        </Routes>
+      <UserContext.Provider value={{user, setUser}}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<SignInPage />} />
+            <Route path="/cadastro" element={<SignUpPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/nova-transacao/entrada" element={<Receiving />} />
+            <Route path="/nova-transacao/saida" element={<Spends />} />
+          </Routes>
       </BrowserRouter>
+      </UserContext.Provider>
     </PagesContainer>
   )
 }
