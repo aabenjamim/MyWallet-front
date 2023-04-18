@@ -3,7 +3,7 @@ import styled from "styled-components"
 import HomePage from "./pages/HomePage"
 import SignInPage from "./pages/SignInPage"
 import SignUpPage from "./pages/SignUpPage"
-import Recieving from "./pages/Recieving"
+import Receiving from "./pages/Receiving"
 import Spends from "./pages/Spends"
 
 export default function App() {
@@ -14,7 +14,7 @@ export default function App() {
           <Route path="/" element={<SignInPage />} />
           <Route path="/cadastro" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/nova-transacao/entrada" element={<Recieving />} />
+          <Route path="/nova-transacao/entrada" element={<Receiving />} />
           <Route path="/nova-transacao/saida" element={<Spends />} />
         </Routes>
       </BrowserRouter>
