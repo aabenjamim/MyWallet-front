@@ -17,10 +17,9 @@ export default function SignInPage() {
 
   function handleLogin(e){
     e.preventDefault()
-
-    apiAuth.login(form)
+    apiAuth.login({...form})
       .then(res=>{
-        console.log(res.data)
+        console.log(res.message)
         const {id, nome, token} = res.data
         setUser({id, nome, token})
         navigate("/home")
@@ -49,7 +48,7 @@ export default function SignInPage() {
           placeholder="Senha" 
           type="password" 
           required
-          autocomplete="new-password" 
+          autoComplete="new-password" 
           value={form.senha}
           onChange={handleForm}
         />
