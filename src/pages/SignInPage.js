@@ -19,14 +19,14 @@ export default function SignInPage() {
     e.preventDefault()
     apiAuth.login({...form})
       .then(res=>{
-        console.log(res.message)
-        const {id, nome, token} = res.data
-        setUser({id, nome, token})
+        console.log(res.data)
+        const {idUsuario, token} = res.data
+        setUser({idUsuario, token})
         navigate("/home")
       })
       .catch(err =>{
         console.log(err.response.data)
-        alert(err.response.data.message)
+        alert(err.response.data)
       })
 
   }
