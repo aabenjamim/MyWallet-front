@@ -8,7 +8,7 @@ import { UserContext } from "../contexts/UserContext"
 export default function SignInPage() {
 
   const [form, setForm] = useState({email: "", senha: ""})
-  const {user, setUser} = useContext(UserContext)
+  const {setUser} = useContext(UserContext)
   const navigate = useNavigate()
 
   function handleForm(e){
@@ -18,10 +18,11 @@ export default function SignInPage() {
   function handleLogin(e){
     e.preventDefault()
     apiAuth.login({...form})
-      .then(res=>{
+      .then(res=>{ 
         console.log(res.data)
-        const {idUsuario, token} = res.data
-        setUser({idUsuario, token})
+        const {idUsuario, nome, token} = res.data
+        setUser({idUsuario, nome, token})
+        localStorage.setItem("user", JSON.stringify({idUsuario, nome, token}))
         navigate("/home")
       })
       .catch(err =>{

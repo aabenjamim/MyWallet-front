@@ -1,10 +1,9 @@
-import { BrowserRouter, Routes, Route, useSubmit } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import styled from "styled-components"
 import HomePage from "./pages/HomePage"
 import SignInPage from "./pages/SignInPage"
 import SignUpPage from "./pages/SignUpPage"
-import Receiving from "./pages/Receiving"
-import Spends from "./pages/Spends"
+import Transactions from "./pages/Transactions"
 import { useState } from "react"
 import { UserContext } from "./contexts/UserContext"
 
@@ -16,14 +15,13 @@ export default function App() {
     <PagesContainer>
       <UserContext.Provider value={{user, setUser}}>
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<SignInPage />} />
-            <Route path="/cadastro" element={<SignUpPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/nova-transacao/entrada" element={<Receiving />} />
-            <Route path="/nova-transacao/saida" element={<Spends />} />
-          </Routes>
-      </BrowserRouter>
+            <Routes>
+              <Route path="/" element={<SignInPage />} />
+              <Route path="/cadastro" element={<SignUpPage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/nova-transacao/:tipo" element={<Transactions />} />
+            </Routes>
+        </BrowserRouter>
       </UserContext.Provider>
     </PagesContainer>
   )

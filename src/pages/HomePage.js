@@ -1,11 +1,18 @@
 import styled from "styled-components"
 import { BiExit } from "react-icons/bi"
 import { AiOutlineMinusCircle, AiOutlinePlusCircle } from "react-icons/ai"
-import {Link, useNavigate } from "react-router-dom"
+import {useNavigate } from "react-router-dom"
+import apiTransactions from "../services/apiTransactions"
+import { useContext, useEffect, useState } from "react"
+import { UserContext } from "../contexts/UserContext"
 
 export default function HomePage() {
 
+  const [transacao, setTransacao] = useState([])
   const navigate = useNavigate()
+  const {user} = useContext(UserContext)
+
+  useEffect(getListaTransacoes)
 
   function handleEntrada(){
     navigate("/nova-transacao/entrada")
@@ -16,30 +23,36 @@ export default function HomePage() {
   }
 
 
+  function getListaTransacoes(){
+    apiTransactions.getTransactions(user.token)
+      .then(res=>{
+        console.log(res.data)
+        setTransacao(res.data)
+      })
+      .catch(err=>{
+        alert(err.response.data.message)
+      })
+  }
+
+
   return (
     <HomeContainer>
       <Header>
-        <h1>Olá, Fulano</h1>
+        <h1>Olá, {user.nome}</h1>
         <BiExit />
       </Header>
 
       <TransactionsContainer>
         <ul>
-          <ListItemContainer>
-            <div>
-              <span>30/11</span>
-              <strong>Almoço mãe</strong>
-            </div>
-            <Value color={"negativo"}>120,00</Value>
-          </ListItemContainer>
-
-          <ListItemContainer>
-            <div>
-              <span>15/11</span>
-              <strong>Salário</strong>
-            </div>
-            <Value color={"positivo"}>3000,00</Value>
-          </ListItemContainer>
+          {transacao.reverse().map(t=>(
+                      <ListItemContainer key={t._id}>
+                      <div>
+                        <span>{t.data}</span>
+                        <strong>{t.descricao}</strong>
+                      </div>
+                      <Value color={t.tipo}>{t.valor}</Value>
+                    </ListItemContainer>
+          ))}
         </ul>
 
         <article>
@@ -120,7 +133,7 @@ const ButtonsContainer = styled.section`
 const Value = styled.div`
   font-size: 16px;
   text-align: right;
-  color: ${(props) => (props.color === "positivo" ? "green" : "red")};
+  color: ${(props) => (props.color === "entrada" ? "green" : "red")};
 `
 const ListItemContainer = styled.li`
   display: flex;
@@ -134,3 +147,18 @@ const ListItemContainer = styled.li`
     margin-right: 10px;
   }
 `
+/*          <ListItemContainer>
+            <div>
+              <span>30/11</span>
+              <strong>Almoço mãe</strong>
+            </div>
+            <Value color={"negativo"}>120,00</Value>
+          </ListItemContainer>
+
+          <ListItemContainer>
+            <div>
+              <span>15/11</span>
+              <strong>Salário</strong>
+            </div>
+            <Value color={"positivo"}>3000,00</Value>
+          </ListItemContainer>*/
