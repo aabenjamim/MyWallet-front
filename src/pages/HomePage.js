@@ -12,7 +12,7 @@ export default function HomePage() {
   const navigate = useNavigate()
   const {user} = useContext(UserContext)
 
-  useEffect(getListaTransacoes)
+  useEffect(getListaTransacoes, [user.token])
 
   function handleEntrada(){
     navigate("/nova-transacao/entrada")
@@ -30,7 +30,7 @@ export default function HomePage() {
         setTransacao(res.data)
       })
       .catch(err=>{
-        alert(err.response.data.message)
+        console.log(err)
       })
   }
 
@@ -44,13 +44,13 @@ export default function HomePage() {
 
       <TransactionsContainer>
         <ul>
-          {transacao.reverse().map(t=>(
+          {transacao.map(t=>(
                       <ListItemContainer key={t._id}>
-                      <div>
-                        <span>{t.data}</span>
-                        <strong>{t.descricao}</strong>
-                      </div>
-                      <Value color={t.tipo}>{t.valor}</Value>
+                        <div>
+                          <span>{t.data}</span>
+                          <strong>{t.descricao}</strong>
+                        </div>
+                        <Value color={t.tipo}>{t.valor}</Value>
                     </ListItemContainer>
           ))}
         </ul>
