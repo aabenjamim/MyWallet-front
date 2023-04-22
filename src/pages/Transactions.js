@@ -13,13 +13,13 @@ export default function Transactions() {
   const [form, setForm] = useState({valor:"", descricao:""})
   const {user} = useContext(UserContext)
 
+
   function handleForm(e){
     setForm({...form, [e.target.name]: e.target.value})
   }
 
   function handleHome(e){
     e.preventDefault()
-
     const body = {...form, tipo: tipo}
     apiTransactions.postTransaction(user.token, body, tipo)
     .then(res=>{
@@ -36,8 +36,10 @@ export default function Transactions() {
     <TransactionsContainer>
       <h1>Nova {tipo}</h1>
       <form onSubmit={handleHome}>
-        <input placeholder="Valor" type="text" name="valor" value={form.valor} onChange={handleForm}/>
-        <input placeholder="Descrição" type="text" name="descricao" value={form.descricao} onChange={handleForm}/>
+        <input placeholder="Valor" type="number" name="valor" value={form.valor} 
+        onChange={handleForm} required/>
+        <input placeholder="Descrição" type="text" name="descricao" 
+        value={form.descricao} onChange={handleForm} required/>
         <button>Salvar {tipo}</button>
       </form>
     </TransactionsContainer>
