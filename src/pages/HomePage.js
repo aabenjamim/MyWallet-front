@@ -11,6 +11,7 @@ export default function HomePage() {
   const [transacao, setTransacao] = useState([])
   const navigate = useNavigate()
   const {user} = useContext(UserContext)
+ // const [soma, setSoma] = useState(0)
 
   useEffect(getListaTransacoes, [user.token])
 
@@ -22,7 +23,6 @@ export default function HomePage() {
     navigate("/nova-transacao/saida")
   }
 
-
   function getListaTransacoes(){
     apiTransactions.getTransactions(user.token)
       .then(res=>{
@@ -32,6 +32,16 @@ export default function HomePage() {
       .catch(err=>{
         console.log(err)
       })
+  }
+
+  function somaTotal() {
+    return transacao.reduce((acc, curr) => {
+      if (curr.tipo === "entrada") {
+        return acc + Number(curr.valor)
+      } else {
+        return acc - Number(curr.valor)
+      }
+    }, 0)
   }
 
 
@@ -57,7 +67,8 @@ export default function HomePage() {
 
         <article>
           <strong>Saldo</strong>
-          <Value color={"positivo"}>2880,00</Value>
+          <Value color={somaTotal() >= 0 ? "entrada" : "saida"}>
+            {somaTotal().toFixed(2)}</Value>
         </article>
       </TransactionsContainer>
 
