@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
 import apiTransactions from "../services/apiTransactions"
@@ -6,12 +6,19 @@ import { UserContext } from "../contexts/UserContext"
 
 export default function Transactions() {
 
+
   const {tipo} = useParams()
 
   const navigate = useNavigate()
 
   const [form, setForm] = useState({valor:"", descricao:""})
   const {user} = useContext(UserContext)
+
+  useEffect(()=>{
+    if(!user){
+      navigate("/")
+    }
+  }, [])
 
 
   function handleForm(e){

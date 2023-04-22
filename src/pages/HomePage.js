@@ -10,8 +10,13 @@ export default function HomePage() {
 
   const [transacao, setTransacao] = useState([])
   const navigate = useNavigate()
-  const {user} = useContext(UserContext)
- // const [soma, setSoma] = useState(0)
+  const {user, setUser} = useContext(UserContext)
+
+  useEffect(()=>{
+    if(!user){
+      navigate("/")
+    }
+  }, [])
 
   useEffect(getListaTransacoes, [user.token])
 
@@ -44,12 +49,17 @@ export default function HomePage() {
     }, 0)
   }
 
+  function sair() {
+    setUser("")
+    localStorage.setItem("user", JSON.stringify(""))
+    navigate("/")
+  }
 
   return (
     <HomeContainer>
       <Header>
         <h1>Olá, {user.nome}</h1>
-        <BiExit />
+        <BiExit onClick={sair}/>
       </Header>
 
       <TransactionsContainer>
@@ -60,7 +70,7 @@ export default function HomePage() {
                           <span>{t.data}</span>
                           <strong>{t.descricao}</strong>
                         </div>
-                        <Value color={t.tipo}>{t.valor}</Value>
+                        <Value color={t.tipo}>{Number(t.valor).toFixed(2)}</Value>
                     </ListItemContainer>
           ))}
         </ul>
