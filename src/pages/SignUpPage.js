@@ -94,6 +94,7 @@ const SingUpContainer = styled.section`
   align-items: center;
 `
 const Login = styled(Link)`
+  margin-top: 32px;
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
