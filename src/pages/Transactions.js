@@ -28,7 +28,7 @@ export default function Transactions() {
   function handleHome(e){
     e.preventDefault()
     const body = {...form, tipo: tipo}
-    apiTransactions.postTransaction(user.token, body, tipo)
+    apiTransactions.postTransaction(user.token, body)
     .then(res=>{
       setForm({valor:"", descricao:""})
     })
