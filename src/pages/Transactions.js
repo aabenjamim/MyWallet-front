@@ -18,7 +18,7 @@ export default function Transactions() {
     if(!user){
       navigate("/")
     }
-  }, [])
+  }, [navigate, user])
 
 
   function handleForm(e){

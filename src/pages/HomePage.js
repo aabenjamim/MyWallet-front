@@ -16,7 +16,7 @@ export default function HomePage() {
     if(!user){
       navigate("/")
     }
-  }, [])
+  }, [navigate, user])
 
   useEffect(getListaTransacoes, [user.token])
 

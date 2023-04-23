@@ -15,7 +15,7 @@ export default function SignInPage() {
     if(user){
       navigate("/home")
     }
-  }, [])
+  }, [navigate, user])
 
   function handleForm(e){
     setForm({...form, [e.target.name]: e.target.value})
