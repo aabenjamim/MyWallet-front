@@ -113,6 +113,13 @@ const Header = styled.header`
   margin-bottom: 15px;
   font-size: 26px;
   color: white;
+  h1{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 31px;
+  }
 `
 const TransactionsContainer = styled.article`
   flex-grow: 1;

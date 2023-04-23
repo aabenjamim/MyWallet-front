@@ -79,9 +79,9 @@ export default function SignUpPage() {
         <button type="submit">Cadastrar</button>
       </form>
 
-      <Link to="/">
+      <Login to="/">
         Já tem uma conta? Entre agora!
-      </Link>
+      </Login>
     </SingUpContainer>
   )
 }
@@ -92,4 +92,11 @@ const SingUpContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+const Login = styled(Link)`
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
 `

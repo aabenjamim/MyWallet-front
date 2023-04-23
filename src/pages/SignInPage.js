@@ -62,9 +62,9 @@ export default function SignInPage() {
         <button type="submit">Entrar</button>
       </form>
 
-      <Link to="/cadastro">
+      <Cadastro to="/cadastro">
         Primeira vez? Cadastre-se!
-      </Link>
+      </Cadastro>
     </SingInContainer>
   )
 }
@@ -75,4 +75,12 @@ const SingInContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`
+
+const Cadastro = styled(Link)`
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
 `
