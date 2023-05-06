@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# MyWallet - Carteira Digital
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Seja bem-vindo(a) ao MyWallet, meu primeiro projeto full stack! Aqui você encontrará uma aplicação de carteira digital que permite gerenciar suas transações financeiras de forma simples e segura.
 
-## Available Scripts
+## Sobre o Projeto
 
-In the project directory, you can run:
+O MyWallet é uma carteira digital desenvolvida para ser o meu primeiro projeto full stack. Ele permite que você registre suas transações de entrada e saída de recursos financeiros, visualize o saldo atual da carteira e confira o histórico de transações com detalhes de data e valor.
 
-### `npm start`
+## Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O MyWallet foi construído utilizando as seguintes tecnologias:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js
+- Express
+- MongoDB
+- React
+- React Router
+- Styled Components
+- UUID (Universal Unique Identifier)
 
-### `npm test`
+## Funcionalidades
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Registro de transações financeiras
+- Visualização do saldo atual
+- Histórico de transações
+- Proteção de dados com autenticação de usuários
 
-### `npm run build`
+## Contribuição
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Contribuições são sempre bem-vindas! Se você deseja contribuir com este projeto, siga as etapas abaixo:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Faça um fork do repositório
+2. Crie uma nova branch: git checkout -b minha-nova-feature
+3. Faça suas alterações e salve-as
+4. Faça commit das suas alterações: git commit -m 'Adicionando nova feature'
+5. Envie para o branch principal: git push origin minha-nova-feature
+6. Abra uma pull request
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Espero que você aproveite o MyWallet e tenha uma ótima experiência gerenciando suas finanças!
 
-### `npm run eject`
+Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato. Será um prazer ajudar!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Obrigada por utilizar o MyWallet!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
